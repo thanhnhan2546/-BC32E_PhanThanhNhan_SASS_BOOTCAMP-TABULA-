@@ -1,0 +1,672 @@
+// import
+@import "../../themes/variables";
+
+header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  @media (max-width: 1199px) {
+    background-color: $bg-c1-light;
+  }
+  .container {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    @media (max-width: 1199px) {
+      justify-content: flex-start;
+      height: 50px;
+      padding: 5px 0;
+      img {
+        width: 50%;
+      }
+    }
+    .btn-menu-bars {
+      height: 100%;
+      width: 50px;
+      border: none;
+      display: none;
+      background-color: $bg-c1-light;
+      text-align: center;
+      @include text($text-3xl, $text-semibold, $text-c1-dark);
+      @media (max-width: 1199px) {
+        display: block;
+      }
+    }
+    .close {
+      display: none;
+      opacity: 1;
+    }
+    .logo {
+      a {
+        img {
+          max-width: 100%;
+        }
+      }
+    }
+    .menu-port {
+      display: flex;
+      justify-content: space-around;
+      @media (max-width: 1199px) {
+        display: none;
+      }
+      .menu {
+        height: 100%;
+        line-height: 230%;
+
+        a {
+          margin-right: 30px;
+          position: relative;
+          @include text(15px, $text-semibold, $text-c1-dark);
+          &::after {
+            content: " ";
+            background-color: $bg-c1-primary;
+            position: absolute;
+            z-index: 5;
+            bottom: -100%;
+            left: 40%;
+            height: 0;
+            width: 0;
+            transition: all 0.2s;
+            border-radius: 50%;
+          }
+          &:hover {
+            @include text(15px, $text-semibold, $text-c1-primary);
+            &::after {
+              height: 10px;
+              width: 10px;
+            }
+          }
+        }
+        .active {
+          &::after {
+            height: 10px;
+            width: 10px;
+          }
+        }
+      }
+      .contact {
+        display: flex;
+        .phone {
+          margin-right: 10px;
+          @include button(
+            $text-base,
+            $text-light,
+            $text-c1-light,
+            $bg-c1-primary,
+            10px,
+            1px solid $bg-c1-primary,
+            30px,
+            $bg-c1-light,
+            $text-c1-primary
+          );
+        }
+        .other-contact {
+          margin-left: 10px;
+          height: 100%;
+          line-height: 250%;
+          a {
+            margin-right: 10px;
+            @include text($text-base, $text-light, $text-c1-dark);
+            &:hover {
+              color: $text-c1-primary;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.carousel {
+  position: relative;
+  height: 700px;
+  @media (max-width: 992px) {
+    height: 800px;
+  }
+  .img-head {
+    position: absolute;
+    img {
+      width: 100%;
+    }
+  }
+  .container {
+    position: relative;
+    padding-top: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    @media (max-width: 992px) {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 100px;
+    }
+    .carousel-content {
+      width: 45%;
+      margin-right: 10%;
+      @media (max-width: 992px) {
+        width: 100%;
+        margin: 0;
+      }
+      h3 {
+        @include text($text-xl, $text-bold, $text-c1-primary);
+        @media (max-width: 992px) {
+          @include text($text-base, $text-bold, $text-c1-primary);
+        }
+      }
+      span {
+        @include text($text-6xl, $text-bold, $text-c1-dark);
+        @media (max-width: 992px) {
+          @include text($text-5xl, $text-bold, $text-c1-dark);
+        }
+      }
+    }
+    .img-carousel {
+      animation-delay: 1s;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .img-foot {
+    img {
+      position: absolute;
+      width: 100%;
+      bottom: 0%;
+    }
+  }
+}
+
+.list-teacher {
+  position: relative;
+  padding-top: 30px;
+  background-color: #dcd1f0;
+
+  .container {
+    .row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      .col {
+        width: calc(100% / 4);
+        padding: 20px;
+        @media (max-width: 992px) {
+          width: calc(100% / 2);
+          padding: 0 20px;
+        }
+        // vòng lặp
+        @for $i from 0 to 5 {
+          .item#{$i + 1} {
+            animation: showList 0.5s * ($i + 1);
+          }
+        }
+        .card {
+          &:hover {
+            -webkit-box-shadow: 0px 10px 13px -7px #504e4e,
+              10px 9px 15px 4px rgba(138, 134, 134, 0.26);
+            box-shadow: 0px 10px 13px -7px #504e4e,
+              10px 9px 15px 4px rgba(138, 134, 134, 0.26);
+          }
+          border-radius: 10px;
+          overflow: hidden;
+          .image {
+            background-color: $bg-c1-light;
+
+            img {
+              &:hover {
+                transform: scale(1.2);
+              }
+              width: 100%;
+            }
+          }
+          img {
+            width: 100%;
+            background-color: $bg-c1-light;
+          }
+          .card-body {
+            overflow: hidden;
+            text-align: center;
+            background-color: $bg-c1-light;
+            padding: 25px;
+            @media (max-width: 992px) {
+              padding: 25px 10px;
+            }
+            h2 {
+              @include text($text-2xs, $text-semibold, $text-c1-primary);
+              margin-bottom: 10px;
+            }
+            h3 {
+              @include text($text-2xl, $text-bold, $text-c1-dark);
+              margin-bottom: 10px;
+            }
+            p {
+              @include text($text-base, $text-light, $text-c1-dark);
+              @media (max-width: 992px) {
+                @include text($text-2xs, $text-semibold, $text-c1-dark);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .bg-footer {
+    img {
+      width: 100%;
+      position: absolute;
+
+      bottom: 0%;
+    }
+  }
+}
+
+.findCourse {
+  position: relative;
+  margin: 70px 0 0 0;
+  height: 600px;
+  @media (max-width: 992px) {
+    height: 1100px;
+  }
+  .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 50px;
+    @media (max-width: 992px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .image {
+      width: 50%;
+      @media (max-width: 992px) {
+        width: 70%;
+      }
+      img {
+        width: 100%;
+      }
+    }
+    .form {
+      margin: 5% 0;
+      padding: 20px;
+      -webkit-box-shadow: 3px 3px 10px 5px rgba(138, 134, 134, 0.26);
+      box-shadow: 3px 3px 10px 5px rgba(138, 134, 134, 0.26);
+      width: 30%;
+      background-color: $bg-c1-light;
+      border-radius: 10px;
+      animation-delay: 1s;
+      @media (max-width: 992px) {
+        width: 100%;
+      }
+      h3 {
+        text-align: center;
+        @include text($text-3xl, $text-bold, $text-c1-dark);
+        @media (max-width: 992px) {
+          text-align: left;
+        }
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 30px 0;
+        .col {
+          display: flex;
+          align-items: center;
+
+          width: 45%;
+          height: 40px;
+          padding: 15px;
+          border: 1px solid $bg-line;
+          border-radius: 15px;
+          @include input(
+            45%,
+            40px,
+            15px,
+            15px,
+            1px solid $bg-line,
+            15px,
+            $bg-c1-light
+          );
+          input {
+            &:focus {
+              outline: none;
+            }
+            border: none;
+            width: 80%;
+            margin-left: 5px;
+          }
+          i {
+            color: $bg-c1-primary;
+          }
+          .graduation {
+            &:focus {
+              outline: none;
+            }
+
+            border: none;
+            width: 100%;
+          }
+        }
+        .select {
+          width: 100%;
+        }
+
+        .text-box {
+          @include input(
+            100%,
+            115px,
+            15px,
+            0,
+            1px solid $bg-line,
+            15px,
+            $bg-c1-light
+          );
+
+          .text-container {
+            white-space: nowrap;
+            position: relative;
+            .text-icon {
+              position: absolute;
+              top: 0;
+              left: 15px;
+              color: $bg-c1-primary;
+            }
+            textarea {
+              position: absolute;
+              top: 0;
+              z-index: 1;
+              color: black;
+              background: none;
+              padding-left: 35px;
+              width: 100%;
+              height: 100px;
+              border: none;
+              &:focus {
+                outline: none;
+              }
+            }
+          }
+        }
+      }
+      .btnSend {
+        margin: 25px 0;
+        width: 45%;
+        height: 40px;
+        @include button(
+          $text-2xs,
+          $text-bold,
+          $text-c1-light,
+          $bg-c1-primary,
+          10px,
+          1px solid $bg-c1-primary,
+          30px,
+          $bg-c1-light,
+          $text-c1-primary
+        );
+        @media (max-width: 992px) {
+          width: 20%;
+        }
+      }
+    }
+  }
+  .img-footer {
+    img {
+      position: absolute;
+      width: 100%;
+      bottom: 0%;
+    }
+  }
+}
+footer {
+  padding-top: 60px;
+  background-image: url("../../../img/footer_background.jpg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  @media (max-width: 992px) {
+    height: 750px;
+    padding-top: 100px;
+  }
+  .container {
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+
+      .col {
+        padding: 25px;
+        width: calc(100% / 4);
+        @media (max-width: 992px) {
+          width: calc(100% / 2);
+        }
+        h3 {
+          @include text($text-2xl, $text-bold, $text-c1-light);
+        }
+        ul {
+          margin-top: 30px;
+        }
+
+        .contact {
+          li {
+            list-style-type: none;
+            @include text($text-2xs, $text-semibold, $text-c1-light);
+            margin: 5px 0;
+            padding-bottom: 10px;
+            i {
+              margin-right: 10px;
+            }
+            .other-contact {
+              a {
+                @include text($text-2xs, $text-semibold, $text-c1-light);
+                &:hover {
+                  color: $text-c1-dark;
+                }
+              }
+            }
+          }
+        }
+        .quickLinks {
+          li {
+            list-style-type: none;
+            @include text($text-2xs, $text-semibold, $text-c1-light);
+            margin: 5px 0;
+            width: 65px;
+            border-bottom: 1px solid $bg-line;
+            padding-bottom: 10px;
+            a {
+              @include text($text-2xs, $text-semibold, $text-c1-light);
+              &:hover {
+                opacity: 0.8;
+              }
+            }
+          }
+        }
+        .about {
+          li {
+            list-style-type: none;
+            @include text($text-2xs, $text-semibold, $text-c1-light);
+            margin: 5px 0;
+            width: 75px;
+            border-bottom: 1px solid $bg-line;
+            padding-bottom: 10px;
+            a {
+              @include text($text-2xs, $text-semibold, $text-c1-light);
+              &:hover {
+                opacity: 0.8;
+              }
+            }
+          }
+        }
+        .newlester {
+          margin-top: 10%;
+          input {
+            color: $text-c1-light;
+            text-align: center;
+            &::placeholder {
+              color: $text-c1-light;
+            }
+            @include input(
+              100%,
+              50px,
+              0,
+              0,
+              1px solid $bg-line,
+              30px,
+              $bg-c1-primary
+            );
+            &:focus {
+              outline-color: $bg-c1-light;
+            }
+          }
+          .btnSub {
+            margin-top: 5%;
+            @include button(
+              $text-2xs,
+              $text-semibold,
+              $text-c1-dark,
+              $bg-c1-light,
+              10px,
+              1px solid $bg-trasnparent,
+              30px,
+              $bg-c1-primary,
+              $text-c1-light
+            );
+            width: 100%;
+            height: 50px;
+            &:hover {
+              border: 1px solid $bg-c1-light;
+            }
+          }
+        }
+      }
+      // .column1 {
+      //   animation-delay: 15s;
+      // }
+      // vòng lặp animation
+      @for $i from 0 to 5 {
+        .column#{$i + 1} {
+          animation-delay: 0.2s * ($i + 1);
+        }
+      }
+    }
+  }
+}
+.menu-bar {
+  background-color: $bg-c1-light;
+  position: sticky;
+  top: 0;
+  display: none;
+  min-width: 250px;
+  max-height: 700px;
+  padding: 0 30px;
+  .logo {
+    a {
+      img {
+      }
+    }
+  }
+  .menu-port {
+    text-align: right;
+    .menu {
+      height: 100%;
+      line-height: 230%;
+
+      ul {
+        list-style-type: none;
+        text-align: center;
+        li {
+          &::after {
+            content: "\f107";
+            font-family: FontAwesome;
+            position: absolute;
+            z-index: 5;
+            right: 10%;
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+          }
+        }
+        a {
+          margin-bottom: 30px;
+          position: relative;
+          @include text(15px, $text-semibold, $text-c1-dark);
+
+          &:hover {
+            &::after {
+              display: block;
+              animation: showList 0.5s;
+            }
+          }
+        }
+      }
+    }
+    .contact {
+      margin-top: 50px;
+
+      .phone {
+        width: 100%;
+        @include button(
+          $text-base,
+          $text-light,
+          $text-c1-light,
+          $bg-c1-primary,
+          10px,
+          1px solid $bg-c1-primary,
+          30px,
+          $bg-c1-light,
+          $text-c1-primary
+        );
+      }
+      .other-contact {
+        text-align: center;
+        margin: 30px 0;
+        height: 100%;
+        line-height: 250%;
+        a {
+          margin-right: 10px;
+          @include text($text-base, $text-light, $text-c1-dark);
+          &:hover {
+            color: $text-c1-primary;
+          }
+        }
+      }
+    }
+  }
+}
+body {
+  @media (max-width: 992px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@keyframes showList {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeRight {
+  from {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
